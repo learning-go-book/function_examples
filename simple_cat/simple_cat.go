@@ -18,12 +18,12 @@ func main() {
 	data := make([]byte, 2048)
 	for {
 		count, err := f.Read(data)
+		os.Stdout.Write(data[:count])
 		if err != nil {
 			if err != io.EOF {
 				log.Fatal(err)
 			}
 			break
 		}
-		os.Stdout.Write(data[:count])
 	}
 }
